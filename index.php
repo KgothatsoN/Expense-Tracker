@@ -20,14 +20,26 @@ require_once("../CRUD/php/component.php")
 
                 <div class="d-flex justify-content-center">
                     <form action="" method="post" class="w-50">
-                        <div class="py-2">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa fa-id-badge" aria-hidden="true"></i></span>
-                                <input type="text" autocomplete="off" class="form-control" placeholder="ID" aria-label="id" aria-describedby="basic-addon1">
-                            </div>    
+                        <div class="pt-2">
+                            <!-- php input component -->
+                            <?php inputElement("<i class='fa fa-id-badge'></i>","ID","item_id","");?>    
                         </div>
                         <div class="pt-2">
-                            <?php inputElement();?>        
+                            <?php inputElement("<i class='fa fa-list'></i>","Item Name","item_name","");?>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <?php inputElement("<i class='fa fa-dollar '></i>","Price","price","");?>  
+                            </div>
+                            <div class="col">
+                                <?php inputElement("<i class='fa fa-calendar '></i>","Date","date","");?>    
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <?php buttonElement("btn-create", "btn btn-light border", "<i class='fa fa-pencil-square-o'></i>", "create","data-toggle='tooltip' data-placement='bottom' title='Add Item'");?>
+                            <?php buttonElement("btn-refresh", "btn btn-light border", "<i class='fa fa-refresh'></i>", "refresh","data-toggle='tooltip' data-placement='bottom' title='Refresh'");?>
+                            <?php buttonElement("btn-update", "btn btn-light border", "<i class='fa fa-save'></i>", "update","data-toggle='tooltip' data-placement='bottom' title='Save'");?>
+                            <?php buttonElement("btn-delete", "btn btn-danger border", "<i class='fa fa-trash-o'></i>", "read","data-toggle='tooltip' data-placement='bottom' title='Delete Selected'");?>
                         </div>
                     </form>
                 </div>
