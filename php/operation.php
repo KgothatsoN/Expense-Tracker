@@ -118,7 +118,7 @@ function deleteRecord(){
     
 }
 //
-if(isset($_POST['deleteall'])){
+if(isset($_POST['deleteAll'])){
     deleteAll();
 }
 //Create Delete All Button
@@ -130,7 +130,7 @@ function deleteBtn(){
         while ($row = mysqli_fetch_assoc($result)){
             $i++;
             if($i > 3){
-                buttonElement("btn-deleteAll", "btn btn-danger", "<i class='fa fa-trash'></i>Delete All", "deleteAll","");
+                buttonElement("btn-deleteAll", "btn btn-danger", "<i class='fa fa-exclamation-triangle'></i> Delete All", "deleteAll","");
                 return;
             }    
         }
@@ -138,5 +138,13 @@ function deleteBtn(){
 }
 // Delete All Records
 function deleteAll(){
-    
+    $sql = "DROP TABLE expenses";
+
+    if(mysqli_query($GLOBALS['con'],$sql)){
+        textNode("success", "All Items Deleted...!");
+        createDb();
+    }
+    else{
+        textNode("error","Error! Unable to delete all items...!");
+    }
 }
