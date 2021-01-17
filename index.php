@@ -1,5 +1,8 @@
 <?php
-require_once("../CRUD/php/component.php")
+require_once("../CRUD/php/component.php");
+require_once("../CRUD/php/db.php");
+
+CreateDb();
 ?>
 <!DOCTYPE html>
 <html lang="en">
