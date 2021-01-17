@@ -11,8 +11,6 @@ if(isset($_POST['create'])){
     createData();
 }
 
-
-
 function createData(){
     $item = inputValue("item_name");
     $price = inputValue("price");
@@ -62,4 +60,55 @@ function getData(){
     if(mysqli_num_rows($result) > 0){
         return $result;
     }
+}
+
+// Update Button
+if(isset($_POST['update'])){
+    updateData();
+}
+
+//Update data
+// function updateData(){
+//     $id = inputValue("item_id");
+//     $item = inputValue("item_name");
+//     $price = inputValue("price");
+//     $date = inputValue("date");
+
+//     if($item && $price && $date){
+//         $sql = "
+//                 UPDATE expenses SET item_name='$item', price='$price', date='$date' WHERE id='$id';                    
+//         ";
+
+//         if(mysqli_query($GLOBALS['con'], $sql)){
+//             textNode("success", "Changes Successful!");
+//         }else{
+//             textNode("error", "Error! Unable to Save Changes!");
+//         }
+
+//     }else{
+//         textNode("error", "Use Edit Icon to Select Items!");
+//     }
+// }
+function updateData(){
+    $id = inputValue("item_id");
+    $item = inputValue("item_name");
+    $price = inputValue("price");
+    $date = inputValue("date");
+
+    if($item && $price && $date){
+        $sql = "
+                    UPDATE expenses SET item_name='$item', price = '$price', date = '$date' WHERE id='$id';                    
+        ";
+
+        if(mysqli_query($GLOBALS['con'], $sql)){
+            textNode("success", "Changes Successful!");
+        }else{
+            textNode("error", "Error! Unable to Save Changes!");
+        }
+
+    }else{
+        textNode("error", "Use Edit Icon to Select Items!");
+    }
+
+
 }

@@ -16,8 +16,8 @@ require_once("../CRUD/php/operation.php");
     <link rel="stylesheet" href="style.css">
 </head>
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         
+
         <main>
             <div class="container text-center">
                 <h1 class="py-4 bg-dark text-light rounded"><i class="fa fa-money"></i> Expense Tracker</h1>
@@ -33,7 +33,7 @@ require_once("../CRUD/php/operation.php");
                         </div>
                         <div class="row">
                             <div class="col">
-                                <?php inputElement("<i class='fa fa-dollar '></i>","Price","price","");?>  
+                                <?php inputElement("<i class='fa fa-gbp '></i>","Price","price","");?>  
                             </div>
                             <div class="col">
                                 <?php inputElement("<i class='fa fa-calendar '></i>","dd-mm-yyyy","date","");?>    
@@ -42,12 +42,12 @@ require_once("../CRUD/php/operation.php");
                         <div class="d-flex justify-content-center">
                             <?php buttonElement("btn-create", "btn btn-light border", "<i class='fa fa-pencil-square-o'></i>", "create","data-toggle='tooltip' data-placement='bottom' title='Add Item'");?>
                             <?php buttonElement("btn-refresh", "btn btn-light border", "<i class='fa fa-refresh'></i>", "refresh","data-toggle='tooltip' data-placement='bottom' title='Refresh'");?>
-                            <?php buttonElement("btn-update", "btn btn-light border", "<i class='fa fa-save'></i>", "update","data-toggle='tooltip' data-placement='bottom' title='Save'");?>
+                            <?php buttonElement("btn-update", "btn btn-light border", "<i class='fa fa-save'></i>", "update","data-toggle='tooltip' data-placement='bottom' title='Update'");?>
                             <?php buttonElement("btn-delete", "btn btn-danger border", "<i class='fa fa-trash-o'></i>", "read","data-toggle='tooltip' data-placement='bottom' title='Delete Selected'");?>
                         </div>
                     </form>
                 </div>
-
+                
                 <div class="d-flex table-data">
                     <table class="table table-striped table-dark">
                         <thead class="thead-dark">
@@ -61,23 +61,30 @@ require_once("../CRUD/php/operation.php");
                         </thead>
                         <tbody id="tbody">
                             <?php
-                                if(isset($_POST['refresh'])){
-                                    $result = getData();
 
-                                    if($result){
-                                        while($row = mysqli_fetch_assoc($result)){?>
-                                            <tr>
-                                                <td><?php echo $row['id'];?></td>
-                                                <td><?php echo $row['item_name'];?></td>
-                                                <td><?php echo $row['price'];?></td>
-                                                <td><?php echo $row['date'];?></td>
-                                                <td ><i class="fa fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></td>
-                                            </tr>    
 
-                                    <?php
-                                        }
+                            if(isset($_POST['refresh'])){
+                                $result = getData();
+
+                                if($result){
+
+                                    while ($row = mysqli_fetch_assoc($result)){ ?>
+
+                                        <tr>
+                                            <td data-id="<?php echo $row['id']; ?>"><?php echo $row['id']; ?></td>
+                                            <td data-id="<?php echo $row['id']; ?>"><?php echo $row['item_name']; ?></td>
+                                            <td data-id="<?php echo $row['id']; ?>"><?php echo '£'.$row['price']; ?></td>
+                                            <td data-id="<?php echo $row['id']; ?>"><?php echo $row['date']; ?></td>
+                                            <td ><i class="fa fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></td>
+                                        </tr>
+
+                            <?php
                                     }
+
                                 }
+                            }
+
+
                             ?>
                         </tbody>
                     </table>
@@ -85,6 +92,13 @@ require_once("../CRUD/php/operation.php");
                 </div>
             </div>
         </main>
+    
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="../CRUD/javascript/main.js"></script>
 
     </body>
 </html>
