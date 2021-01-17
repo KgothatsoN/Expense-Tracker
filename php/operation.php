@@ -12,6 +12,7 @@ if(isset($_POST['create'])){
 }
 
 
+
 function createData(){
     $item = inputValue("item_name");
     $price = inputValue("price");
@@ -22,7 +23,7 @@ function createData(){
                 VALUES('$item','$price','$date')";
         
         if (mysqli_query($GLOBALS['con'], $sql)){
-            echo "Successfully Added Item!";
+            textNode("success", "Successfully Added!");
         }
         else
         {
@@ -31,7 +32,7 @@ function createData(){
     }
     else
     {
-        textNode("success", "Missing Information!");
+        textNode("error", "Missing Information!");
     }
 }
 
@@ -49,6 +50,16 @@ function inputValue($value){
 
 //Error messages
 function textNode($classname, $msg){
-    $element = "<h6 class='$classname'>$msg</6>";
+    $element = "<h6 class='$classname'>$msg</h6>";
     echo $element;
+}
+
+//Fect data from db
+function getData(){
+    $sql ="SELECT * FROM expenses";
+
+    $result = mysqli_query($GLOBALS['con'],$sql);
+    if(mysqli_num_rows($result) > 0){
+        return $result;
+    }
 }
