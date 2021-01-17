@@ -35,13 +35,37 @@ require_once("../CRUD/php/component.php")
                                 <?php inputElement("<i class='fa fa-calendar '></i>","Date","date","");?>    
                             </div>
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             <?php buttonElement("btn-create", "btn btn-light border", "<i class='fa fa-pencil-square-o'></i>", "create","data-toggle='tooltip' data-placement='bottom' title='Add Item'");?>
                             <?php buttonElement("btn-refresh", "btn btn-light border", "<i class='fa fa-refresh'></i>", "refresh","data-toggle='tooltip' data-placement='bottom' title='Refresh'");?>
                             <?php buttonElement("btn-update", "btn btn-light border", "<i class='fa fa-save'></i>", "update","data-toggle='tooltip' data-placement='bottom' title='Save'");?>
                             <?php buttonElement("btn-delete", "btn btn-danger border", "<i class='fa fa-trash-o'></i>", "read","data-toggle='tooltip' data-placement='bottom' title='Delete Selected'");?>
                         </div>
                     </form>
+                </div>
+
+                <div class="d-flex table-data">
+                    <table class="table table-striped table-dark">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Item Name</th>
+                                <th>Price</th>
+                                <th>Price</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>Hat</td>
+                                <td>£43.99</td>
+                                <td>4-50-56</td>
+                                <td><i class="fa fa-edit btnedit"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </main>
