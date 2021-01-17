@@ -1,8 +1,7 @@
 <?php
 require_once("../CRUD/php/component.php");
-require_once("../CRUD/php/db.php");
+require_once("../CRUD/php/operation.php");
 
-CreateDb();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +34,7 @@ CreateDb();
                                 <?php inputElement("<i class='fa fa-dollar '></i>","Price","price","");?>  
                             </div>
                             <div class="col">
-                                <?php inputElement("<i class='fa fa-calendar '></i>","Date","date","");?>    
+                                <?php inputElement("<i class='fa fa-calendar '></i>","dd-mm-yyyy","date","");?>    
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">

@@ -1,6 +1,6 @@
 <?php
 
-function CreateDb() {
+function createDb() {
     $servername = "localhost";
     $username = "root";
     $password = "";
