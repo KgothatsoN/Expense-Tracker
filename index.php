@@ -1,3 +1,6 @@
+<?php
+require_once("../CRUD/php/component.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +27,7 @@
                             </div>    
                         </div>
                         <div class="pt-2">
-                                
+                            <?php inputElement();?>        
                         </div>
                     </form>
                 </div>
