@@ -1,8 +1,10 @@
+let id = $("input[name*='item_id']");
+id.attr("readonly","readonly");
 
 $(".btnedit").click(e =>{
     let textvalues = displayData(e);
 
-    let id = $("input[name*='item_id']");
+    
     let item = $("input[name*='item_name']");
     let price = $("input[name*='price']");
     let date = $("input[name*='date']");

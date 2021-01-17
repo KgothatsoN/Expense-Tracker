@@ -26,7 +26,7 @@ require_once("../CRUD/php/operation.php");
                     <form action="" method="post" class="w-50">
                         <div class="pt-2">
                             <!-- php input component -->
-                            <?php inputIDElement("<i class='fa fa-id-badge'></i>","ID","item_id","");?>    
+                            <?php inputElement("<i class='fa fa-id-badge'></i>","ID","item_id",setID());?>    
                         </div>
                         <div class="pt-2">
                             <?php inputElement("<i class='fa fa-list'></i>","Item Name","item_name","");?>

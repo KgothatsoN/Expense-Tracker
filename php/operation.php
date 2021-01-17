@@ -34,6 +34,19 @@ function createData(){
     }
 }
 
+//Set ID to textbox
+function setID(){
+    $getid = getData();
+    $id = 0;
+
+    if($getid){
+        while ($row = mysqli_fetch_assoc($getid)){
+            $id = $row['id'];
+        }
+    }
+    return ($id+1);
+}
+
 function inputValue($value){
     $inputbox = mysqli_real_escape_string($GLOBALS['con'],trim($_POST[$value]));
 
