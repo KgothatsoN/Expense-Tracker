@@ -64,31 +64,9 @@ function getData(){
 
 // Update Button
 if(isset($_POST['update'])){
-    updateData();
+    updateData();  
 }
 
-//Update data
-// function updateData(){
-//     $id = inputValue("item_id");
-//     $item = inputValue("item_name");
-//     $price = inputValue("price");
-//     $date = inputValue("date");
-
-//     if($item && $price && $date){
-//         $sql = "
-//                 UPDATE expenses SET item_name='$item', price='$price', date='$date' WHERE id='$id';                    
-//         ";
-
-//         if(mysqli_query($GLOBALS['con'], $sql)){
-//             textNode("success", "Changes Successful!");
-//         }else{
-//             textNode("error", "Error! Unable to Save Changes!");
-//         }
-
-//     }else{
-//         textNode("error", "Use Edit Icon to Select Items!");
-//     }
-// }
 function updateData(){
     $id = inputValue("item_id");
     $item = inputValue("item_name");
@@ -109,6 +87,56 @@ function updateData(){
     }else{
         textNode("error", "Use Edit Icon to Select Items!");
     }
+}
+
+// Delete Button
+if(isset($_POST['delete'])){
+    deleteRecord();
+}
+
+//Delete selected record
+function deleteRecord(){
+    $item = (int)inputValue("item_id");
+
+    if($item){
+        $sql = "DELETE FROM expenses WHERE id=$item";
+
+        if(mysqli_query($GLOBALS['con'],$sql)){
+            textNode("success", "Item Deleted!");
+        }
+        else
+        {
+            textNode("error", "Unable to Delete Record!");
+        }
 
 
+    }
+    else
+    {
+        textNode("error", "Please Select Item for Deletion...");
+    }
+    
+}
+//
+if(isset($_POST['deleteall'])){
+    deleteAll();
+}
+//Create Delete All Button
+function deleteBtn(){
+    $result = getData();
+    $i = 0;
+
+    if($result){
+        while ($row = mysqli_fetch_assoc($result)){
+            $i++;
+            if($i > 3){
+                buttonElement("btn-deleteAll", "btn btn-danger", "<i class='fa fa-trash'></i>Delete All", "deleteAll","");
+                return;
+            }    
+        }
+    }
+}
+// Delete All Records
+function deleteAll(){
+    
 }
