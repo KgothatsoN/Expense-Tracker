@@ -1,5 +1,5 @@
 # Expense-Tracker
 
-# Technologies
+### Technologies
 * PHP
 * MySql Database
