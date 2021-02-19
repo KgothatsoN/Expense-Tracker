@@ -1,5 +1,5 @@
 # Expense-Tracker
-![](expense_trackerview.png)
+![](Expense_TrackerView.png)
 
 ### Technologies
 * PHP
